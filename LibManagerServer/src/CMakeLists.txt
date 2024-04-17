@@ -7,9 +7,8 @@ include(../cmake/get_cpm.cmake)
 
 CPMAddPackage(
         NAME drogon
-        VERSION 1.7.5
         GITHUB_REPOSITORY drogonframework/drogon
-        GIT_TAG v1.7.5
+        GIT_TAG v1.9.3
 )
 
 CPMAddPackage(
