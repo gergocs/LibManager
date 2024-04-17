@@ -1,0 +1,43 @@
+<mat-form-field>
+    <mat-label>Select User</mat-label>
+    <mat-select [(ngModel)]="selectedUser" name="user" (ngModelChange)="getUserPermissions()">
+        @for (user of users; track user) {
+            <mat-option [value]="user">{{ user }}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+
+<div *ngIf="isPermissionEnabled">
+    <div>
+        <mat-label>Read</mat-label>
+        <mat-checkbox [checked]="validatePermission(Permissions.READ)" (click)="updatePermissionList(Permissions.READ)">
+        </mat-checkbox>
+    </div>
+
+    <div>
+        <mat-label>Write</mat-label>
+        <mat-checkbox [checked]="validatePermission(Permissions.WRITE)"
+                      (click)="updatePermissionList(Permissions.WRITE)"></mat-checkbox>
+    </div>
+
+    <div>
+        <mat-label>Delete</mat-label>
+        <mat-checkbox [checked]="validatePermission(Permissions.DELETE)"
+                      (click)="updatePermissionList(Permissions.DELETE)"></mat-checkbox>
+    </div>
+
+    <div>
+        <mat-label>Delete User</mat-label>
+        <mat-checkbox [checked]="validatePermission(Permissions.DELETE_USER)"
+                      (click)="updatePermissionList(Permissions.DELETE_USER)"></mat-checkbox>
+    </div>
+
+    <div>
+        <mat-label>Create User</mat-label>
+        <mat-checkbox [checked]="validatePermission(Permissions.CREATE_USER)"
+                      (click)="updatePermissionList(Permissions.CREATE_USER)"></mat-checkbox>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" (click)="onUpdateClicked()">Update user</button>
+    </div>
+</div>
